@@ -10,39 +10,39 @@ import java.util.List;
 public class RegisterPage extends Base{
 
     By registerLinkLocator=By.linkText("REGISTER");
-    By registerPageLocator=By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[1]/td/img");
+    By registerPageLocator=By.cssSelector("[src=\"images/mast_register.gif\"]");
 
     By usernameLocator=By.id("email");
     By passwordLocator=By.name("password");
-    By confirmPasswordLocator=By.cssSelector("body > div:nth-child(6) > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td > form > table > tbody > tr:nth-child(15) > td:nth-child(2) > input[type=password]");
+    By confirmPasswordLocator=By.cssSelector("[name=\"confirmPassword\"]");
 
     By registerBtnLocator=By.name("submit");
 
     By registeredMessage=By.cssSelector("font");
 
-    public RegisterPage(WebDriver driver) {
-        super(driver);
-    }
-    public void registerUser() throws InterruptedException {
-        click(registerLinkLocator);
-        Thread.sleep(2000);
-        if(isDisplayed(registerPageLocator)){
-            //jesusQA
-            type("qualityadmin", usernameLocator);
-            type("pass1", passwordLocator);
-            type("pass1", confirmPasswordLocator);
-
-            click(registerBtnLocator);
-        }else {
-            System.out.println("Register pages was not found");
-        }
-
-
-    }
-    public String registeredMessage(){
-        List<WebElement> fonts=findElements(registeredMessage);
-        return getText(fonts.get(5));
-    }
+   public RegisterPage(WebDriver driver){
+       super(driver);
+   }
+   public void registerUser() throws InterruptedException {
+   click(registerLinkLocator);
+   Thread.sleep(2000);
+   if (isDisplayed(registerPageLocator)){
+       type("qualityadmin",usernameLocator);
+       type("pass1",passwordLocator);
+       type("pass1",confirmPasswordLocator);
+       click(registerBtnLocator);
+   }else {
+       System.out.println("No se realizo el registro de usuario");
+   }
+   }
+   public String registeredMessage(){
+       List<WebElement> fonts=findElements(registeredMessage);
+       return getText(fonts.get(5));
+   }
 }
+
+
+
+
 
 
