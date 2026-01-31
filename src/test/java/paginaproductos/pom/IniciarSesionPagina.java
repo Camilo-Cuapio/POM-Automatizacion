@@ -2,17 +2,27 @@ package paginaproductos.pom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class IniciarSesionPagina extends Base {
+
     By usuarioLocalizador = By.xpath("//*[@id=\"user-name\"]");
     By passLocalizador = By.cssSelector("#password");
     By loginBtnLocalizador = By.cssSelector(".submit-button");
-    By paginaInicioLocalizador = By.cssSelector(".title");
-    By errorContrasena = By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3");
+//Mensaje de error, contraseña incorrecta
+    By errorContrasenaMensaje = By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3");
+//Localizadores de X
+    By xUsuario=By.cssSelector("#login_button_container>div>form>div:nth-child(1)>svg");
+    By xPassword=By.cssSelector("#login_button_container>div>form>div:nth-child(2)>svg");
+    By xMsjError=By.cssSelector(".error-message-container>h3>button>svg");
+
 
     public IniciarSesionPagina(WebDriver driver) {
         super(driver);
     }
+//Iniciar sesion con usuario y contraseña incorrecta
 
     public void iniciarSesion() {
         if (isDisplayed(usuarioLocalizador)) {
@@ -24,9 +34,10 @@ public class IniciarSesionPagina extends Base {
         }
     }
 
-    public Boolean ingesoPagina() {
-        return isDisplayed(paginaInicioLocalizador);
+    public Boolean ingresoPagina() {
+        return getCurrentUrl().contains("inventory.html");
     }
+//Iniciar sesion con contraseña incorrecta
 
     public void iniciarSesionError() {
         if (isDisplayed(usuarioLocalizador)) {
@@ -37,7 +48,24 @@ public class IniciarSesionPagina extends Base {
             System.out.println("No se realizo el logeo correctamente");
         }
     }
-    public Boolean mensajeError(){
-        return isDisplayed(errorContrasena);
+    public String mensajeErrorLogeo(){
+
+        return getText(errorContrasenaMensaje);
+
+    }
+
+    //Validacion de X en Usuario, Password y MsjError
+
+    public int xUsu(){
+     List< WebElement > xUsu=findElements(xUsuario);
+     return xUsu.size();
+    }
+    public int xPass(){
+        List<WebElement>xPass=findElements(xPassword);
+        return xPass.size();
+    }
+    public int xMsjErrorr(){
+        List<WebElement>xMsjErrorr=findElements(xMsjError);
+        return xMsjErrorr.size();
     }
 }

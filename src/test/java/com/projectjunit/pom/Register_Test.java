@@ -16,14 +16,14 @@ private WebDriver driver;
 RegisterPage registerPage;
 
 @Before
-    public void setUp(){
-    registerPage=new RegisterPage(driver);
-    driver=registerPage.chromeDriverConnection();
-    registerPage.visit("https://demo.guru99.com/test/newtours/");
+public void setUp(){
+registerPage=new RegisterPage(driver);
+driver=registerPage.chromeDriverConnection();
+registerPage.visit("https://demo.guru99.com/test/newtours/");
 }
 @After
     public void tearDown(){
-    driver.close();
+    driver.quit();
 }
 @Test
     public void test() throws InterruptedException {
@@ -31,5 +31,4 @@ RegisterPage registerPage;
     assertEquals("Note: Your user name is qualityadmin.",registerPage.registeredMessage());
 }
 }
-
 

@@ -1,12 +1,15 @@
 package paginaproductos.pom;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Base {
     private WebDriver driver;
@@ -54,7 +57,34 @@ public class Base {
     }
 
     public void visit(String url) {
+
         driver.get(url);
     }
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    // Tomar imagenes de la ejecucion
+    public void takeScreenshot(String name) {
+        File screenshotFile = ((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(
+                    screenshotFile,
+                    new File(name + "_" + System.currentTimeMillis() + ".png")
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void setImplicitWait(long seconds) {
+        driver.manage().timeouts()
+                .implicitlyWait(Duration.ofSeconds(seconds));
+    }
 }
+
+
+
 
