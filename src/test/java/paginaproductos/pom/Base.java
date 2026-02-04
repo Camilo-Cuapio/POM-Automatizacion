@@ -23,31 +23,37 @@ public class Base {
         driver = new ChromeDriver();
         return driver;
     }
-
+//Encontrar un elemento
     public WebElement findElement(By locator) {
+
         return driver.findElement(locator);
     }
-
+//Collección Arraylist
     public List<WebElement> findElements(By locator) {
+
         return driver.findElements(locator);
     }
-
+//Obtener texto
     public String getText(WebElement element) {
+
         return element.getText();
     }
-
+//Obtener texto de un elemento
     public String getText(By locator) {
-        return driver.findElement(locator).getText();
+        return
+                driver.findElement(locator).getText();
     }
-
+//Escribir texto
     public void type(String inputText, By locator) {
+
         driver.findElement(locator).sendKeys(inputText);
     }
-
+//Dar click a boton
     public void click(By locator) {
+
         driver.findElement(locator).click();
     }
-
+//Se visualiza el elemento
     public Boolean isDisplayed(By locator) {
         try {
             return driver.findElement(locator).isDisplayed();
@@ -55,17 +61,17 @@ public class Base {
             return false;
         }
     }
-
+//Visitar pagina
     public void visit(String url) {
 
         driver.get(url);
     }
-
+//Obtener URL
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 
-    // Tomar imagenes de la ejecucion
+    // Toma de captura de cada Test
     public void takeScreenshot(String name) {
         File screenshotFile = ((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.FILE);
@@ -79,6 +85,7 @@ public class Base {
             e.printStackTrace();
         }
     }
+
     public void setImplicitWait(long seconds) {
         driver.manage().timeouts()
                 .implicitlyWait(Duration.ofSeconds(seconds));

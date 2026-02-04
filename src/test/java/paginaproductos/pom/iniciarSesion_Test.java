@@ -34,7 +34,7 @@ public class iniciarSesion_Test {
     public void test2() throws InterruptedException {
        iniciarSesionPagina.iniciarSesionError();
        assertEquals("Epic sadface: Username and password do not match any user in this service",iniciarSesionPagina.mensajeErrorLogeo());
-       iniciarSesionPagina.takeScreenshot("Mensaje de error");
+       iniciarSesionPagina.takeScreenshot("Contraseña incorrecta, Mensaje de error");
    }
    @Test
     public void test3(){
@@ -42,7 +42,7 @@ public class iniciarSesion_Test {
        assertEquals(1,iniciarSesionPagina.xUsu());
        assertEquals(1,iniciarSesionPagina.xPass());
        assertEquals(1,iniciarSesionPagina.xMsjErrorr());
-       iniciarSesionPagina.takeScreenshot("equis");
+       iniciarSesionPagina.takeScreenshot("Validación de X inicio con error");
    }
 
 
