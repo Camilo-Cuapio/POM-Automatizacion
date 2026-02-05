@@ -13,18 +13,21 @@ public class iniciarSesion_Test {
     private WebDriver driver;
     IniciarSesionPagina iniciarSesionPagina;
 
+    //Ingresar a pagina
     @Before
     public void setUp() {
         iniciarSesionPagina = new IniciarSesionPagina(driver);
         driver = iniciarSesionPagina.chromeDriverConnection();
         iniciarSesionPagina.visit("https://www.saucedemo.com/");
     }
-
+//Cerrar pagina
     @After
     public void tearDown() {
         driver.quit();
     }
 
+//Tests
+   //Iniciar sesion y validar nombre de pagina
     @Test
     public void test() throws InterruptedException {
         iniciarSesionPagina.iniciarSesion();
@@ -32,7 +35,7 @@ public class iniciarSesion_Test {
         assertTrue(iniciarSesionPagina.ingresoPagina());
         //iniciarSesionPagina.takeScreenshot("inicio de sesion");
     }
-
+//Iniciar sesion con pagina
     @Test
     public void test2() throws InterruptedException {
         iniciarSesionPagina.iniciarSesionError();
