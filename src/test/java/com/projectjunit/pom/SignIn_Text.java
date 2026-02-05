@@ -13,16 +13,20 @@ public class SignIn_Text {
 private WebDriver driver;
 SignInPage signInPage;
 
+//Ingresr a pagina
 @Before
     public void setUp(){
   signInPage=new SignInPage(driver);
   driver=signInPage.chromeDriverConnection();
   signInPage.visit("https://demo.guru99.com/test/newtours/");
 }
+
+//Cerrar pagina
 @After
     public void tearDown(){
     driver.quit();
 }
+//Logeo de usuario creado y validación de ingreso a pagina
 @Test
     public void test() throws InterruptedException {
     signInPage.signIn();

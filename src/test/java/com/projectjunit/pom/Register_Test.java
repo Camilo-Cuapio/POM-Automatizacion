@@ -15,17 +15,21 @@ public class Register_Test {
 private WebDriver driver;
 RegisterPage registerPage;
 
+//Ingresar a pagina
 @Before
 public void setUp(){
 registerPage=new RegisterPage(driver);
 driver=registerPage.chromeDriverConnection();
 registerPage.visit("https://demo.guru99.com/test/newtours/");
 }
+//Cerrar pagina
 @After
     public void tearDown(){
     driver.quit();
+    //Logeo en pagina inicial
 }
 @Test
+//Validacion de registro con mensaje
     public void test() throws InterruptedException {
     registerPage.registerUser();
     assertEquals("Note: Your user name is qualityadmin.",registerPage.registeredMessage());

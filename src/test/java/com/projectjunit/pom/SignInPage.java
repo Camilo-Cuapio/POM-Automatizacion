@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class SignInPage extends Base{
 
+    //Localizares de elementos
     By userLocator=By.name("userName");
     By passLocator=By.name("password");
     By signInBtnLocator=By.name("submit");
@@ -14,6 +15,8 @@ public class SignInPage extends Base{
  public SignInPage(WebDriver driver){
      super(driver);
  }
+
+ //Ingreso de usuario y contraseña
  public void signIn(){
      if (isDisplayed(userLocator)){
          type("qualityadmin", userLocator);
@@ -23,6 +26,7 @@ public class SignInPage extends Base{
          System.out.println("No se encuentra los elementos para signIn");
      }
  }
+ //Validacion de ingreso correcto
  public Boolean isHomePageDisplayed(){
 return isDisplayed(homePageLocator);
  }

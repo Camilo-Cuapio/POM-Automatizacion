@@ -9,6 +9,7 @@ import java.util.List;
 
 public class RegisterPage extends Base{
 
+    //Localizadores de elementos
     By registerLinkLocator=By.linkText("REGISTER");
     By registerPageLocator=By.cssSelector("[src=\"images/mast_register.gif\"]");
 
@@ -24,6 +25,8 @@ public class RegisterPage extends Base{
        super(driver);
 
            }
+
+    //Registro de usuarios
     public void registerUser() throws InterruptedException {
         click(registerLinkLocator);
         Thread.sleep(2000);
@@ -34,6 +37,7 @@ public class RegisterPage extends Base{
             click(registerBtnLocator);
        }
    }
+   //Validacion de registro correcto con mensaje
    public String registeredMessage(){
        List<WebElement> fonts=findElements(registeredMessage);
        return getText(fonts.get(5));
