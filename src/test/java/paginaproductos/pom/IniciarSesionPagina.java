@@ -10,6 +10,7 @@ import java.util.List;
 
 public class IniciarSesionPagina extends Base {
 
+    //Localizadores de elementos
     By usuarioLocalizador = By.xpath("//*[@id=\"user-name\"]");
     By passLocalizador = By.cssSelector("#password");
     By loginBtnLocalizador = By.cssSelector(".submit-button");
@@ -24,7 +25,7 @@ public class IniciarSesionPagina extends Base {
     public IniciarSesionPagina(WebDriver driver) {
         super(driver);
     }
-//Iniciar sesion con usuario y contraseña incorrecta
+//Iniciar sesion con usuario y contraseña correcta
 
     public void iniciarSesion() {
         if (isDisplayed(usuarioLocalizador)) {
