@@ -25,6 +25,7 @@ registerPage.visit("https://demo.guru99.com/test/newtours/");
 @After
     public void tearDown(){
     driver.quit();
+    
 }
 @Test
     public void test() throws InterruptedException {
