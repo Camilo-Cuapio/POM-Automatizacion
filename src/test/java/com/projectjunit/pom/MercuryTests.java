@@ -12,4 +12,3 @@ public class MercuryTests {
 //Correccion errores en jenkin
 
 }
-
