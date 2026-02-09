@@ -9,53 +9,46 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class Base {
-    protected WebDriver driver;
+private WebDriver driver;
+public Base(){
 
-    public Base(WebDriver driver) {
-        this.driver = driver;
+}
+public Base(WebDriver driver){
+    this.driver=driver;
+}
+public WebDriver chromeDriverConnection(){
+    WebDriverManager.chromedriver().setup();
+    driver=new ChromeDriver();
+    return driver;
+}
+public WebElement findElement(By locator){
+    return driver.findElement(locator);
+}
+public List<WebElement> findElements(By locator){
+    return driver.findElements(locator);
+}
+public String getText(WebElement element){
+    return element.getText();
+}
+public String getText(By locator){
+    return driver.findElement(locator).getText();
+}
+public void type(String inputText, By locator){
+    driver.findElement(locator).sendKeys(inputText);
+}
+public void click(By locator){
+    driver.findElement(locator).click();
+}
+public Boolean isDisplayed(By locator){
+    try{
+        return driver.findElement(locator).isDisplayed();
+    }catch (org.openqa.selenium.NoSuchElementException e){
+        return false;
     }
-//Conexion de pagina
-    public WebDriver chromeDriverConnection() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        return driver;
-    }
-//Localizar elemento
-    public WebElement findElement(By locator) {
-        return driver.findElement(locator);
-    }
-//Coleccion de eleentos
-    public List<WebElement> findElements(By locator) {
-        return driver.findElements(locator);
-    }
-//Obtener texto
-    public String getText(WebElement element) {
-        return element.getText();
-    }
-//Obtener texto de elemento
-    public String getText(By locator) {
-        return driver.findElement(locator).getText();
-    }
-//Escribir texto
-    public void type(String inputText, By locator) {
-        driver.findElement(locator).sendKeys(inputText);
-    }
-//Dar click
-    public void click(By locator) {
-        driver.findElement(locator).click();
-    }
-//Se visualiza eleento
-    public Boolean isDisplayed(By locator) {
-        try {
-            return driver.findElement(locator).isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
-    }
-//Visitar pagina
-    public void visit(String url) {
-        driver.get(url);
-    }
+}
+public void visit(String url){
+   driver.get(url);
+}
 }
 
 
