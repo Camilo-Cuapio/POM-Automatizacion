@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class Base {
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public Base(WebDriver driver) {
         this.driver = driver;
