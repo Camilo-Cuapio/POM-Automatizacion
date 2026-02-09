@@ -17,8 +17,9 @@ RegisterPage registerPage;
 
 @Before
 public void setUp(){
+Base base=new Base();
+driver=base.chromeDriverConnection();
 registerPage=new RegisterPage(driver);
-driver=registerPage.chromeDriverConnection();
 registerPage.visit("https://demo.guru99.com/test/newtours/");
 }
 @After
