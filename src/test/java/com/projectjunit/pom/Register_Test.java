@@ -22,11 +22,13 @@ driver=base.chromeDriverConnection();
 registerPage=new RegisterPage(driver);
 registerPage.visit("https://demo.guru99.com/test/newtours/");
 }
-@After
-    public void tearDown(){
-    driver.quit();
-    
-}
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
 @Test
     public void test() throws InterruptedException {
     registerPage.registerUser();
