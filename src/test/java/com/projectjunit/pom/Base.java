@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class Base {
+
 private WebDriver driver;
 public Base(){
 
