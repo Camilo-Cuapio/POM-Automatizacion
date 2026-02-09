@@ -1,0 +1,1 @@
+Automatización Selenium Junit, con arquitectura page object model, proyecto alojado en GitHub que implementa CI/CD mediante Jenkins, automatizando la construcción, pruebas y despliegue del código para garantizar calidad y eficiencia en el desarrollo.
