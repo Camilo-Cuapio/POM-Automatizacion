@@ -9,6 +9,6 @@ import org.junit.runners.Suite;
 
 
 public class MercuryTests {
-//Correccion errores en jenkin
+
 
 }
