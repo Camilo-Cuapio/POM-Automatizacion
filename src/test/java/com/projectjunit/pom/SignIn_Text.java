@@ -16,15 +16,22 @@ SignInPage signInPage;
 //Ingresr a pagina
 @Before
     public void setUp(){
+    Base base = new Base();
+    driver=base.chromeDriverConnection();
+    if (driver != null) {
   signInPage=new SignInPage(driver);
-  driver=signInPage.chromeDriverConnection();
   signInPage.visit("https://demo.guru99.com/test/newtours/");
+    } else {
+        throw new RuntimeException("No se pudo iniciar el WebDriver. Verifica la versión de Chrome.");
+    }
 }
 
 //Cerrar pagina
 @After
     public void tearDown(){
-    driver.quit();
+    if (driver != null) {
+        driver.quit();
+    }
 }
 //Logeo de usuario creado y validación de ingreso a pagina
 @Test
