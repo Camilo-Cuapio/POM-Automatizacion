@@ -42,7 +42,14 @@ public class SignIn_Text {
     //Logeo de usuario creado y validación de ingreso a pagina
     @Test
     public void testSignIn() {
-        if (driver == null || signInPage == null) {
+      signInPage.signIn();
+      assertTrue(signInPage.isHomePageDisplayed());
+
+
+
+
+
+      /*  if (driver == null || signInPage == null) {
             throw new RuntimeException("WebDriver o SignInPage no inicializado correctamente.");
         }
 
@@ -55,5 +62,6 @@ public class SignIn_Text {
 
         // Validación
         assertTrue("La página de inicio debería mostrarse tras login", signInPage.isHomePageDisplayed());
+    }*/
     }
 }
