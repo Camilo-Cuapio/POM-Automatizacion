@@ -18,7 +18,7 @@ RegisterPage registerPage;
 @Before
 public void setUp(){
     Base base = new Base();
-    driver = base.chromeDriverConnection();
+    driver=base.chromeDriverConnection();
 
     if (driver != null) {
         registerPage = new RegisterPage(driver);
