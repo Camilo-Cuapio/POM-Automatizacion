@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,13 +15,28 @@ import java.util.concurrent.TimeUnit;
 public class Base {
     private WebDriver driver;
 
+    public Base() {
+
+    }
     public Base(WebDriver driver) {
         this.driver = driver;
     }
 
     public WebDriver chromeDriverConnection() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        try {
+            // Prepara el ChromeDriver compatible
+            WebDriverManager.chromedriver().setup();
+
+            // ChromeOptions mínimo para estabilidad
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--start-maximized"); // solo esta opción
+
+            driver = new ChromeDriver(options);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            driver = null; // evita NPE si falla la sesión
+        }
         return driver;
     }
 //Encontrar un elemento

@@ -16,16 +16,21 @@ public class iniciarSesion_Test {
     //Ingresar a pagina
     @Before
     public void setUp() {
+        Base base=new Base();
+        driver = base.chromeDriverConnection();
+        if (driver != null) {
         iniciarSesionPagina = new IniciarSesionPagina(driver);
-        driver = iniciarSesionPagina.chromeDriverConnection();
         iniciarSesionPagina.visit("https://www.saucedemo.com/");
+        } else {
+            throw new RuntimeException("No se pudo iniciar el WebDriver. Verifica la versión de Chrome.");
+        }
     }
 //Cerrar pagina
-    @After
-    public void tearDown() {
+public void tearDown() {
+    if (driver != null) {
         driver.quit();
     }
-
+}
 //Tests
    //Iniciar sesion y validar nombre de pagina
     @Test
