@@ -17,10 +17,15 @@ RegisterPage registerPage;
 
 @Before
 public void setUp(){
-Base base=new Base();
-driver=base.chromeDriverConnection();
-registerPage=new RegisterPage(driver);
-registerPage.visit("https://demo.guru99.com/test/newtours/");
+    Base base = new Base();
+    driver = base.chromeDriverConnection();
+
+    if (driver != null) {
+        registerPage = new RegisterPage(driver);
+        registerPage.visit("https://demo.guru99.com/test/newtours/");
+    } else {
+        throw new RuntimeException("No se pudo iniciar el WebDriver. Verifica la versión de Chrome.");
+    }
 }
     @After
     public void tearDown() {

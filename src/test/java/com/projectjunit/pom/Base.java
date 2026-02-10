@@ -11,27 +11,35 @@ import java.util.List;
 
 public class Base {
 
-private WebDriver driver;
+    private WebDriver driver;
 
-public Base(){
+    public Base() {
 
-}
-public Base(WebDriver driver){
-    this.driver=driver;
-}
-public WebDriver chromeDriverConnection(){
-    WebDriverManager.chromedriver().setup();
+    }
+
+    public Base(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public WebDriver chromeDriverConnection() {
+        try {
+            // Prepara el ChromeDriver compatible
+            WebDriverManager.chromedriver().setup();
+
+            // ChromeOptions mínimo para estabilidad
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--start-maximized"); // solo esta opción
+
+            driver = new ChromeDriver(options);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            driver = null; // evita NPE si falla la sesión
+        }
+        return driver;
+    }
 
 
-    //ChromeOptions
-    ChromeOptions options = new ChromeOptions();
-
-    options.addArguments("--start-maximized");
-
-
-    driver=new ChromeDriver(options);
-    return driver;
-}
 public WebElement findElement(By locator){
     return driver.findElement(locator);
 }
