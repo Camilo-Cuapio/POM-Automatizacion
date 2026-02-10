@@ -24,6 +24,7 @@ public WebDriver chromeDriverConnection(){
 
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--remote-allow-origins=*");
+options.addArguments("--start-maximized");
 
     driver=new ChromeDriver(options);
     return driver;
