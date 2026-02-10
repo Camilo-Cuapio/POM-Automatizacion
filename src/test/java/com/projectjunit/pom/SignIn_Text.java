@@ -41,8 +41,9 @@ public class SignIn_Text {
 
     //Logeo de usuario creado y validación de ingreso a pagina
     @Test
-    public void testSignIn() {
+    public void testSignIn() throws InterruptedException {
       signInPage.signIn();
+      Thread.sleep(2000);
       assertTrue(signInPage.isHomePageDisplayed());
 
 
