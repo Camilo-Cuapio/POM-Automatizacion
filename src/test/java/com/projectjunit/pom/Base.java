@@ -24,7 +24,10 @@ public WebDriver chromeDriverConnection(){
 
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--remote-allow-origins=*");
-options.addArguments("--start-maximized");
+    options.addArguments("--disable-notifications");
+    options.addArguments("--start-maximized");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
 
     driver=new ChromeDriver(options);
     return driver;
