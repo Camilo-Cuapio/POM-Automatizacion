@@ -5,6 +5,8 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -86,6 +88,11 @@ public class Base {
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
+    // Espera explícita para asegurar que los elementos estén cargados
+    public void esperasExplicitasColle(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
 
     // Toma de captura de cada Test
     public void takeScreenshot(String name) {
@@ -106,6 +113,7 @@ public class Base {
         driver.manage().timeouts()
                 .implicitlyWait(Duration.ofSeconds(seconds));
     }
+
 }
 
 

@@ -4,7 +4,10 @@ import com.google.gson.internal.bind.util.ISO8601Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class IniciarSesionPagina extends Base {
     By xUsuario = By.cssSelector("#login_button_container>div>form>div:nth-child(1)>svg");
     By xPassword = By.cssSelector("#login_button_container>div>form>div:nth-child(2)>svg");
     By xMsjError = By.cssSelector(".error-message-container>h3>button>svg");
-    By listadeProductosElement = By.cssSelector(".inventory_item_name ");
+    By listadeProductosElement = By.cssSelector(".inventory_item_name");
 
     public IniciarSesionPagina(WebDriver driver) {
         super(driver);
@@ -77,11 +80,16 @@ public class IniciarSesionPagina extends Base {
     //Obtener actuales productos
 
     public List<String> actualProductoss() {
+
+        // Espera explícita para asegurar que los elementos estén cargados
+        esperasExplicitasColle(listadeProductosElement);
+
+        // Captura los elementos
         List<WebElement> actualProductoselement = findElements(listadeProductosElement);
         List<String> actualProductos = new ArrayList<>();
 
         for (WebElement element : actualProductoselement) {
-            actualProductos.add(element.getText());
+            actualProductos.add(element.getText().trim());//trim limpia espacios
         }
         return actualProductos;
     }
